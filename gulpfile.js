@@ -37,8 +37,8 @@ gulp.task('css', function() {
   return sass(cssPath, { style: 'expanded' })
     .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))  // css3属性兼容的浏览器配置
     .pipe(gulp.dest( 'dist/css')) //放入目标文件夹
-    .pipe(rename({ suffix: '.min' }))  //加后缀
     .pipe(minifycss())  //混淆
+    .pipe(rename({ suffix: '.min' }))  //加后缀
     .pipe(gulp.dest( goal + '/css')) //混淆后加入目标文件
     .pipe(notify({ message: 'css task complete' }));
 });
@@ -50,7 +50,7 @@ gulp.task('js', function() {
     .pipe(gulp.dest( 'dist/js'))  //合并后放入目标文件夹
     .pipe(rename({ suffix: '.min' })) //重命名
     .pipe(uglify())                    //混淆文件
-    .pipe(gulp.dest( 'dist/js'))       //混淆后文件放入目标文件夹
+    .pipe(gulp.dest( goal + '/js'))       //混淆后文件放入目标文件夹
     .pipe(notify({ message: 'js task complete' }));  //输出完成消息
 });
 
