@@ -1,0 +1,13 @@
+//guide page
+@import '../base/mix';
+
+.guide{
+  @include textAlign();
+  background: $warmBorder;
+  h3{
+    line-height: 3rem;
+  }
+  .eve-flex-child{
+    line-height: 1.5rem;
+  }
+}

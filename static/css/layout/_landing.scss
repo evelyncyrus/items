@@ -75,3 +75,22 @@
     }
   }
 }
+
+
+
+.land-info{
+  .eve-flex-child{
+    height: (48/$bfSize) * 1rem;
+    padding-top: (158/$bfSize) *1rem;
+    background: url('http://m.ppdaicdn.com/msite/img/landing/light.png') no-repeat center 30%;
+    background-size: 45%;
+  }
+  .eve-flex-par{
+    &>.eve-flex-child:nth-child(2){
+      background-image: url('http://m.ppdaicdn.com/msite/img/landing/time.png');
+    }
+    &>.eve-flex-child:nth-child(3){
+      background-image: url('http://m.ppdaicdn.com/msite/img/landing/cash.png');
+    }
+  }
+}

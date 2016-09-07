@@ -16,7 +16,10 @@ ul{
   padding: 0;
   list-style: none;
 }
-a{text-decoration: none;}
+a{
+  color:; 
+  text-decoration: none;
+}
 
 img{@include maxWidth(100%);}
 
