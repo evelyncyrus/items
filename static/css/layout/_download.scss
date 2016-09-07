@@ -1,0 +1,38 @@
+@import '../base/theme';
+
+.app-contain {
+  padding: 2.5rem 0;
+  text-align: center;
+
+  .hd-area {margin-bottom: .8rem;}
+
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    color: $lightColor;
+    line-height: 1.5;
+    font-weight: 500;
+    font-size: 1.05rem;
+
+    .num {
+      font-weight: bold;
+    }
+  }
+
+  .bd-area, .ft-area {
+    padding: 0 1.5rem;
+  }
+
+  .bd-area {
+    height: 13rem;
+    background: url(http://m.ppdaicdn.com/msite/img/landing/red-bag.png) no-repeat center center;
+    background-size: contain;
+  }
+
+  .info {
+    margin: 1.5rem 0 .7rem;
+    color: $infoColor ;
+    font-size: .9rem;
+  }
+}

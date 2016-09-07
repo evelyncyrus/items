@@ -1,0 +1,32 @@
+{
+  "name": "autowork",
+  "version": "0.0.1",
+  "author": "evelyncyrus",
+  "description": "extends for auto work",
+  "keywords": [
+    "gulp","node.js","javascript","package.json","browserSync"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:evelyncyrus/items.git" 
+  },
+  "dependencies": {
+    "gulp":"3.9.1",
+    "browser-sync":"2.15.0",
+    "del":"2.2.2"
+  },
+  "devDependencies": {
+    "gulp-ruby-sass":"2.1.0",
+    "gulp-autoprefixer":"3.1.1",
+    "gulp-minify-css":"1.2.4",
+    "gulp-uglify":"2.0.0",
+    "gulp-imagemin":"3.0.3",
+    "gulp-rename":"1.2.2",
+    "gulp-concat":"2.6.0",
+    "gulp-notify":"2.2.0",
+    "gulp-cache":"0.4.5",
+    "gulp-webserver":"0.9.1",
+    "gulp.spritesmith": "6.2.1"
+  }
+
+}

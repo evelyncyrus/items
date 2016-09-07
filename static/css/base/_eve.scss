@@ -1,0 +1,34 @@
+@import 'mix';
+
+/*eve btn*/
+a.eve-btn-link{
+  @include btnCss();
+  width: 100%;
+  max-width: 18rem;
+  font-size: .9rem;
+}
+
+
+
+/*eve flex*/
+.eve-flex-child{
+   @include flexChild();
+   height: (48/$bfSize) * 1rem;
+   padding-top: (158/$bfSize) *1rem;
+   background: url('http://m.ppdaicdn.com/msite/img/landing/light.png') no-repeat center 30%;
+   background-size: 45%;
+}
+
+.eve-flex-par{
+  @include flexPar();
+  &>.eve-flex-child:nth-child(2){
+    background-image: url('http://m.ppdaicdn.com/msite/img/landing/time.png');
+  }
+  &>.eve-flex-child:nth-child(3){
+    background-image: url('http://m.ppdaicdn.com/msite/img/landing/cash.png');
+  }
+}
+
+.eve-full-img{
+  @include fullImg();
+}

@@ -1,0 +1,27 @@
+@import 'mix';
+
+html,body{
+  margin: 0 auto;
+  padding: 0;
+  @include maxWidth(750px);
+  font-family: Arial, "Comic Sans MS","Microsoft YaHei";
+}
+
+b,i{
+  font-weight: normal;
+  font-style: normal;
+}
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a{text-decoration: none;}
+
+img{@include maxWidth(100%);}
+
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}

@@ -1,0 +1,42 @@
+@import 'theme';
+
+@mixin maxWidth($width:$maxScreen){
+  max-width: $width;
+}
+
+/*full img*/
+@mixin fullImg($px: 0,$height:100%){
+  width: 100%;
+  margin-bottom: $px - 3px;
+  img{
+    width: 100%;
+    height: $height;
+  }
+}
+
+
+/*flex col*/
+@mixin flexPar(){
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flexChild($rate: 1, $textAlign: center){
+  -webkit-box-flex: $rate;
+  -ms-flex: $rate;
+  flex: $rate;
+  text-align: $textAlign;
+}
+
+
+/*btn css*/
+@mixin btnCss($showWay: inline-block, $color1: $white, $color2: transparent, $color3: $lightColor, $line: 2.5rem, $radius: .3rem){
+  display: $showWay;
+  color: $color1;
+  border: 1px solid $color2;
+  background-color: $color3;
+  line-height: $line;
+  border-radius: $radius;
+}
+
