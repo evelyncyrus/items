@@ -35,35 +35,35 @@ gulp.task('html', function() {
 // css
 gulp.task('css', function() {
   return sass(cssPath, { style: 'expanded' })
-    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
-    .pipe(gulp.dest( 'dist/css'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(minifycss())
-    .pipe(gulp.dest( goal + '/css'))
+    .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))  // css3属性兼容的浏览器配置
+    .pipe(gulp.dest( 'dist/css')) //放入目标文件夹
+    .pipe(rename({ suffix: '.min' }))  //加后缀
+    .pipe(minifycss())  //混淆
+    .pipe(gulp.dest( goal + '/css')) //混淆后加入目标文件
     .pipe(notify({ message: 'css task complete' }));
 });
 
 // js
 gulp.task('js', function() {
   return gulp.src(jsPath)
-    //.pipe(concat('main.js'))
-    .pipe(gulp.dest( 'dist/js'))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
-    .pipe(gulp.dest( 'dist/js'))
-    .pipe(notify({ message: 'js task complete' }));
+    //.pipe(concat('main.js'))  //jsPath下所有js文件合并到main.js
+    .pipe(gulp.dest( 'dist/js'))  //合并后放入目标文件夹
+    .pipe(rename({ suffix: '.min' })) //重命名
+    .pipe(uglify())                    //混淆文件
+    .pipe(gulp.dest( 'dist/js'))       //混淆后文件放入目标文件夹
+    .pipe(notify({ message: 'js task complete' }));  //输出完成消息
 });
 
 // Images
 gulp.task('images', function() {
   return gulp.src(imgPath)
-    .pipe(gulp.dest( 'dist/img'))
+    .pipe(gulp.dest( 'dist/img'))   
     .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
     .pipe(gulp.dest( 'dist/img'))
     .pipe(notify({ message: 'Images task complete' }));
 });
 
-// spritesmith
+// 雪碧图
 gulp.task('sprite',function(){
   return gulp.src(root+'img/sprite/*.png')
     .pipe(sprite({
