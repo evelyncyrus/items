@@ -2,10 +2,15 @@
 @import '../base/mix';
 
 .guide{
+  font-size: .5rem;
   @include textAlign();
   background: $warmBorder;
-  h3{
+  h3,h5{
     line-height: 3rem;
+  }
+  section{
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $white;
   }
   .eve-flex-child{
     line-height: 1.5rem;

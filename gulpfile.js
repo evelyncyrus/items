@@ -23,7 +23,7 @@ var goal = '../m.ppdaicdn.com/msite';
 var jsPath = root + 'js/*.js';
 var cssPath = root + 'css/**/*.scss';
 var imgPath = root + 'img/*';
-var htmlPath = 'pages/*.html';
+var htmlPath = 'pages/work/*.html';
 
 //html
 gulp.task('html', function() {

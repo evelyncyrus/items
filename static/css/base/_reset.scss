@@ -1,5 +1,7 @@
 @import 'mix';
 
+$titleSize: .8rem;
+
 html,body{
   margin: 0 auto;
   padding: 0;
@@ -28,3 +30,9 @@ h1,h2,h3,h4,h5,h6{
   padding: 0;
   font-weight: normal;
 }
+h1{font-size: $titleSize + .6rem;}
+h2{font-size: $titleSize + .5rem;}
+h3{font-size: $titleSize + .4rem;}
+h4{font-size: $titleSize + .3rem;}
+h5{font-size: $titleSize + .2rem;}
+h6{font-size: $titleSize + .1rem;}
