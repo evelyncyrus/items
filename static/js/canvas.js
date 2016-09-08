@@ -1,10 +1,8 @@
 
 
 function Rect(ele){
-
   //浏览器兼容
   if(ele.getContext){
-
     var content = ele.getContext("2d");
 
     //路径
@@ -26,10 +24,10 @@ function Rect(ele){
   }
 }
 
+
 function Triangle(ele){
 
   if(ele.getContext){
-
     var ctx = ele.getContext('2d');
 
     //路径
@@ -42,6 +40,7 @@ function Triangle(ele){
   }
 
 }
+
 
 function smile(ele){
 
@@ -83,6 +82,7 @@ function twoTri(ele) {
     ctx.stroke();
   }
 }
+
 
 function circle(ele) {
   if (ele.getContext){
@@ -325,27 +325,199 @@ function gradient(ele) {
     
     // draw shapes
     ctx.fillRect(0, 0, 200, 200);
-    
     ctx.fillStyle = radgrad2;
     ctx.fillRect(50, 50, 100, 100);
   }
 }
 
 // createPattern
-function draw() {
-  var ctx = document.getElementById('canvas').getContext('2d');
+function pattern(ele) {
+  if(ele.getContext){
+    var ctx = ele.getContext('2d');
 
-  // create new image object to use as pattern
-  var img = new Image();
-  img.src = 'https://mdn.mozillademos.org/files/222/Canvas_createpattern.png';
+    // create new image object to use as pattern
+    var img = new Image();
+    img.src = 'https://mdn.mozillademos.org/files/222/Canvas_createpattern.png';
 
-  // to make sure the image is loaded before it is assigned to the pattern
-  img.onload = function() {
+    // to make sure the image is loaded before it is assigned to the pattern
+    img.onload = function() {
 
-    // create pattern
-    var ptrn = ctx.createPattern(img, 'repeat');
-    ctx.fillStyle = ptrn;
-    ctx.fillRect(0, 0, 150, 150);
+      // create pattern
+      var ptrn = ctx.createPattern(img, 'repeat');
+      ctx.fillStyle = ptrn;
+      ctx.fillRect(10, 10, 300, 300);
 
+    }
   }
+}
+
+
+//text shadow
+function shadow(ele){
+  if(ele.getContext){
+    var ctx = ele.getContext('2d');
+    
+    ctx.shadowOffsetY = 2;
+    ctx.shadowOffsetX = 2;
+    ctx.shadowBlur = 2;
+    ctx.shadowColor = 'rgba(0,0,0,.5)';
+
+    ctx.font = '50px Microsoft Yahei';
+    ctx.fillStyle = 'black';
+    ctx.strokeText('嘻嘻哈哈哈',30,80);
+    ctx.textBaseline = 'hanging'
+  }
+}
+
+//fill
+function fill(ele) {
+  if(ele.getContext){
+    var ctx = ele.getContext('2d');
+    ctx.beginPath(); 
+    ctx.arc(50, 50, 30, 0, Math.PI * 2, true);
+    ctx.arc(50, 50, 15, 0, Math.PI * 2, true);
+    ctx.fill("evenodd");
+  }
+}
+
+function paint() {
+
+  // Loop through all images
+  for (var i=0;i<document.images.length;i++){
+    console.log(document.images.length)
+    // Don't add a canvas for the frame image
+    if (document.images[i].getAttribute('id')!='frame'){
+
+      // Create canvas element
+      canvas = document.createElement('canvas');
+      canvas.setAttribute('width',132);
+      canvas.setAttribute('height',150);
+
+      // Insert before the image
+      document.images[i].parentNode.insertBefore(canvas,document.images[i]);
+
+      ctx = canvas.getContext('2d');
+
+      // ctx.mozImageSmoothingEnabled = false;
+      // ctx.webkitImageSmoothingEnabled = false;
+      // ctx.msImageSmoothingEnabled = false;
+      // ctx.imageSmoothingEnabled = false;
+
+      // Draw image to canvas
+      ctx.drawImage(document.images[i],15,20);
+
+      // Add frame
+      ctx.drawImage(document.getElementById('frame'),0,0);
+
+    }
+  }
+}
+
+
+
+function animate(){
+  var sun = new Image();
+  var moon = new Image();
+  var earth = new Image();
+  
+  function init(){
+    sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+    moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+    earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+    window.requestAnimationFrame(draw);
+  }
+
+  function draw() {
+    var ctx = document.getElementById('myCanvas').getContext('2d');
+
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.clearRect(0,0,300,300); // clear canvas
+
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+    ctx.save();
+    ctx.translate(150,150);
+
+    // Earth
+    var time = new Date();
+    ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+    ctx.translate(105,0);
+    ctx.fillRect(0,-12,50,24); // Shadow
+    ctx.drawImage(earth,-12,-12);
+
+    // Moon
+    ctx.save();
+    ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+    ctx.translate(0,28.5);
+    ctx.drawImage(moon,-3.5,-3.5);
+    ctx.restore();
+
+    ctx.restore();
+    
+    ctx.beginPath();
+    ctx.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
+    ctx.stroke();
+ 
+    ctx.drawImage(sun,0,0,300,300);
+
+    window.requestAnimationFrame(draw);
+  }
+
+  init();
+}
+
+
+function ball(){
+  var canvas = document.getElementById('myCanvas');
+  var ctx = canvas.getContext('2d');
+  var raf;
+
+  var ball = {
+    x: 100,
+    y: 100,
+    vx: 5,
+    vy: 1,
+    radius: 25,
+    color: 'yellowgreen',
+    draw: function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2, true);
+      ctx.closePath();
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+  };
+
+  function clear() {
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+  }
+
+  function draw() {
+    clear();
+    ball.draw();
+
+    ball.x += ball.vx;
+    ball.y += ball.vy;
+
+    if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+      ball.vy = -ball.vy;
+    }
+    if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+      ball.vx = -ball.vx;
+    }
+
+    raf = window.requestAnimationFrame(draw);
+  }
+  
+  canvas.addEventListener('mouseover', function(e) {
+    raf = window.requestAnimationFrame(draw);
+  });
+
+  canvas.addEventListener("mouseout", function(e) {
+    window.cancelAnimationFrame(raf);
+  });
+
+
+  ball.draw();
 }
