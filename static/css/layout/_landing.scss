@@ -5,7 +5,7 @@
   position: relative;
   color: $white;
   text-align: center;
-  padding: (57/$bfSize) *1rem (20/$bfSize) * 1rem;
+  padding: (55/$bfSize) *1rem (20/$bfSize) * 1rem;
   background-color: $ftColor;
   &:before{
     content: '';
@@ -31,24 +31,22 @@
   }
   .ft-item{
     background: url("http://m.ppdaicdn.com/msite/img/landing/card.png") no-repeat center left;
-    background-size: 30%;
-    height: (187/$bfSize) *1rem;
+    background-size: 26%;
+    height: (170/$bfSize) *1rem;
     padding-left: (180/$bfSize) *1rem;
     h3{
-       margin-bottom: (20/$bfSize) *1rem;
+       margin-bottom: (15/$bfSize) *1rem;
       font-weight: bold;
-      font-size: (38/$bfSize) *1rem;
+      font-size: (42/$bfSize) *1rem;
       i{
-        font-size:(45/$bfSize)*1rem;
+        font-size:(46/$bfSize)*1rem;
         font-weight: bold;
-        vertical-align: -2px;
       }
     }
     span{
-      font-size: (30/$bfSize) *1rem;
+      font-size: (32/$bfSize) *1rem;
       i{
-        font-size:(33/$bfSize)*1rem;
-        vertical-align: -2px;
+        font-size:(34/$bfSize)*1rem;
       }
     }
     @media screen and (max-width: 320px){
@@ -58,7 +56,7 @@
   .ft-ul{
     text-align: left;
     margin-top: -$height/2;
-    padding: $height (60/$bfSize) *1rem $height/2;
+    padding: $height 0 $height/3 (60/$bfSize) *1rem ;
     border: 1px solid $warmBorder;
     border-radius: .5rem;
     letter-spacing: .01rem;
@@ -81,11 +79,12 @@
 .land-info{
   .eve-flex-child{
     height: (48/$bfSize) * 1rem;
-    padding-top: (158/$bfSize) *1rem;
+    padding-top: (150/$bfSize) *1rem;
     background: url('http://m.ppdaicdn.com/msite/img/landing/light.png') no-repeat center 30%;
     background-size: 45%;
   }
   .eve-flex-par{
+    padding: 0 (20/$bfSize)*1rem;
     &>.eve-flex-child:nth-child(2){
       background-image: url('http://m.ppdaicdn.com/msite/img/landing/time.png');
     }
