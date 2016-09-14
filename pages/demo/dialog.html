@@ -13,19 +13,33 @@
   <meta name="x5-fullscreen" content="true">
   <title>dialog</title>
   <script src="../../dist/js/dialog.js"></script>
+  <style>
+    .popup {
+      position: fixed;
+      top: 45%;
+      left: 45%;
+      width: 10%;
+      height: 10%;
+      z-index: 1000;
+      background: rgba(0, 0, 0, .25)
+    }
+  </style>
 </head>
 
 <body>
-  <button class="btn-link" id="btnPopup" onclick="popup.alert(this,arr)">点击弹出</button>
+  <button class="btn-link" id="btnPopup" onclick="popup.alert(this,obj)">点击弹出</button>
   <script>
     var dom = document.getElementById('btnPopup');
     dom.onclick = function() {
-      var arr = [];
-      arr.url = 'www.baidu.com';
-      arr.txt = '哈哈哈哈';
-      arr.goal = document;
-      console.dir(arr.goal)
-      popup.alert(arr);
+      var obj = [];
+      obj.time = 1000;
+      obj.txt = '哈哈哈哈';
+      obj.goal = document;
+      obj.url = 'www.baidu.com';
+
+      console.dir(createPopup)
+      var aPopup = new createPopup(obj);
+      console.dir(aPopup.alert())
     }
   </script>
 </body>
