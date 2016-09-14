@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Input attr</title>
+  <style>
+    html,body{
+      font-size: 20px;
+      font-family: 'Arial, Helvetica, sans-serif','Microsoft Yahei';
+    }
+    html,body,ul{
+      margin: 0;
+      padding: 0;
+    }
+    input[type="text"] {
+      color: brown;
+      padding: 3px 5px;
+      font-size: 1rem;
+      -webkit-appearance: initial;
+      border: 1px solid currentColor;
+    }
+    input[type="text"]::-webkit-input-placeholder {
+      opacity: .6;
+      color: brown;
+    }
+    ul{
+      list-style: none;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flex;
+      display: -o-flex;
+      display: flex;
+      padding: 2rem 0;
+    }
+    li{
+      -webkit-flex: 1px;
+      -moz-flex: 1px;
+      -ms-flex: 1px;
+      -o-flex: 1px;
+      flex: 1px;
+
+    }
+    a {
+      text-decoration: none;
+    }
+    section,footer{
+      padding: 1rem;
+    }
+    .ft{
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <section id="page">
+    <img src="" alt="">
+    <ul id="navigation">
+      <li><a href="javascript:void(0)">item1</a></li>
+      <li><a href="javascript:void(0)">item2</a></li>
+      <li><a href="javascript:void(0)">item3</a></li>
+    </ul>
+  </section>
+  <footer>
+    <input type="checkbox" id="red">
+    <label for="red">hhh</label>
+    <input type="text" class="val" data-val="hhhh" placeholder="hhhhh">
+  </footer>
+
+  <script>
+
+    //split fn
+    var sentence = 'the quick brown fox jumped over the lazy dog';
+	  var words = sentence.split(" ");
+    for(var i = 0 ; i<words.length; i++){
+      console.log('word'+i+':'+words[i]);
+    }
+
+    //成绩
+    function termGreat(){
+      this.num = [];
+      this.add = add;
+      this.average = average;
+    }
+    function add(great){
+      this.num.push(great);
+    }  
+    function average(){
+      var len = this.num.length;
+      var tot = 0;
+      for(var i=0;i<len;i++){
+        tot = tot + this.num[i];
+      }
+      return tot/len;
+    }
+
+    var thisTerm = new termGreat();
+    thisTerm.add(60);
+    thisTerm.add(70);
+    thisTerm.add(80);
+    thisTerm.add(90);
+    thisTerm.add(100);
+    thisTerm.add(65);
+    thisTerm.add(75);
+    thisTerm.add(85);
+    thisTerm.add(95);
+    console.log(thisTerm.average())
+
+    console.log(this)
+
+    function fn(element){
+      this.ele = element;
+    }
+
+    fn(6)
+    console.log(ele)
+
+
+
+    //this对象测试
+    var name = 'dd';
+    var person = {
+      name: 'cc',
+      hello: function(sth){
+        // var that = this;
+        var sayhello = function(sth){
+          console.log(this.name + ' says ' + sth);
+        };
+        sayhello(sth);
+      }
+    }
+    person.hello('hello world');
+
+    
+  </script>
+
+</body>
+
+</html>
+
+
+<!--//Todo：css3伪类研究及input相关伪类 //Todo: emmet语法研究 //后处理css-->

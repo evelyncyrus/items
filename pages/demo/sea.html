@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 300px;
+      height: 300px;
+      padding: .5em;
+    }
+
+    .area {
+      display: block;
+      width: 100px;
+      height: 100%;
+    }
+
+    img {
+      border: 0;
+      width: 100%;
+    }
+
+    .popup {
+      position: fixed;
+      display: none;
+      left: 50%;
+      z-index: 2;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="area" href="beLoaded.html" id="test" title="点击查看大图">
+    <img src="../../static/img/demo/puppy.jpg">
+  </a>
+  <script src="../../static/js/lib/sea.js"></script>
+  <script>
+    seajs.use("../../static/js/sea/main.js", function(test) {
+      test.bind(document.getElementById("test"));
+    });
+  </script>
+</body>
+
+</html>

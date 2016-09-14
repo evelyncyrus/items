@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parallax Scrolling</title>
+    <style>
+        body{
+        margin: 0;
+        padding: 0;
+        background: rgba(0,0,0,.5);
+        }
+        /*.container{
+            width: 200px;
+            height: 200px;
+        }
+        .hd{
+        position:relative;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        color: purple;
+        z-index: 1;
+        background-color: rgba(0,0,0,.3);
+        }*/
+        page{
+            display: block;
+            margin: 1vh auto;
+            height: 96vh;
+            width: 50vw;
+        }
+        [data-unit]:after{
+            content: attr(data-unit);
+            color: #3b98e0;
+        }
+
+        /*css毛玻璃效果*/
+        [data-menu]{
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="container">
+        <div class="hd">
+            哈哈哈，哈哈哈哈哈哈，原本打算做视差滚动。。。。。。。
+        </div>
+        <div class="bd">
+            中间部分。。。。
+        </div>
+        <div class="ft">
+            尾巴。。。
+        </div>
+    </div>-->
+
+    <!--css毛玻璃效果-->
+    <div data-menu="hd">menu menu menu </div>
+    <!--css毛玻璃效果-->
+
+    <page data-page="1">第1页</page>
+    <page data-page="2">第2页</page>
+    <page data-page="3">第3页</page>
+    <p data-unit="元">剩余话费40</p>
+
+<!--js test-->
+<!--<script>
+        var ws = window.screenX;
+        alert(ws)
+    </script>-->
+</body>
+</html>

@@ -1,0 +1,31 @@
+<head>
+  <meta charset="UTF-8">
+  <!--自适应以及默认处理-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <!--uc和qq强制竖屏-->
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <!--uc和qq强制全屏-->
+  <meta name="full-screen" content="yes">
+  <meta name="x5-fullscreen" content="true">
+  <title>dialog</title>
+  <script src="../../dist/js/dialog.js"></script>
+</head>
+
+<body>
+  <button class="btn-link" id="btnPopup" onclick="popup.alert(this,arr)">点击弹出</button>
+  <script>
+    var dom = document.getElementById('btnPopup');
+    dom.onclick = function() {
+      var arr = [];
+      arr.url = 'www.baidu.com';
+      arr.txt = '哈哈哈哈';
+      arr.goal = document;
+      console.dir(arr.goal)
+      popup.alert(arr);
+    }
+  </script>
+</body>
