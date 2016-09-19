@@ -12,34 +12,146 @@
   <meta name="full-screen" content="yes">
   <meta name="x5-fullscreen" content="true">
   <title>dialog</title>
-  <script src="../../dist/js/dialog.js"></script>
+  <script src="../../dist/js/main.js"></script>
   <style>
+    .font,
+    body {
+      font: 12px/1 Microsoft Yahei, Arial, Helvetica, "sans-serif";
+    }
+
+    strong {
+      font-weight: normal;
+    }
+
+    p:after {
+      content: '';
+      height: 100%;
+    }
+
+    p:after,
+    em {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    a {
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
     .popup {
       position: fixed;
-      top: 45%;
-      left: 45%;
-      width: 10%;
-      height: 10%;
+      top: 50%;
+      left: 50%;
       z-index: 1000;
-      background: rgba(0, 0, 0, .25)
+    }
+
+    .popup p {
+      font-size: 14px;
+    }
+
+    .mask {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 500;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, .4);
+    }
+
+    .popup em {
+      width: 28px;
+      margin: 0 10px
+    }
+
+    .popup p strong {
+      display: inline
+    }
+
+    .popup.popup-confirm {
+      width: 220px;
+      height: 140px;
+      text-align: center;
+      background-color: hsla(0, 0%, 100%, .9);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-left: -110px;
+      margin-top: -70px;
+    }
+
+    .popup.popup-confirm a {
+      display: inline-block;
+      width: 50%;
+      height: 36px;
+      line-height: 36px;
+      color: #ff2741;
+      border-top: 1px solid #d2d2d2;
+    }
+
+    .popup.popup-confirm p {
+      display: inline-block;
+      vertical-align: middle;
+      width: 100%;
+      height: 104px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      color: #595959;
+      text-align: center;
+    }
+
+    .popup p strong {
+      display: inline-block;
+      max-width: 150px;
+      text-align: justify;
+      vertical-align: middle;
+    }
+
+    .popup.popup-alert {
+      width: 180px;
+      padding: 20px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, .8);
+      margin-left: -90px;
+      margin-top: -25px
+    }
+
+    .popup.popup-alert p {
+      color: #fff;
+      margin: 0;
+      overflow: hidden;
+      line-height: 50px
+    }
+
+    .popup.popup-alert p strong {
+      width: 110px;
+      line-height: 16px;
+    }
+
+    .popup.popup-confirm a.popup-confirm-cancel {
+      border-right: 1px solid #d2d2d2;
     }
   </style>
 </head>
 
 <body>
-  <button class="btn-link" id="btnPopup" onclick="popup.alert(this,obj)">点击弹出</button>
+  <button class="btn-link" id="btnPopup">点击弹出</button>
   <script>
     var dom = document.getElementById('btnPopup');
     dom.onclick = function() {
       var obj = [];
-      obj.time = 1000;
-      obj.txt = '哈哈哈哈';
       obj.goal = document;
-      obj.url = 'www.baidu.com';
-
-      console.dir(createPopup)
+      obj.interval = 6000;
+      obj.txt = '哈哈哈哈,笑呀哈哈哈哈！';
+      obj.url = '';
+      obj.fun = function() {
+        alert(1);
+      }
       var aPopup = new createPopup(obj);
-      console.dir(aPopup.alert())
+      aPopup.confirm(obj);
     }
   </script>
+
 </body>

@@ -19,7 +19,7 @@ var gulp = require('gulp'),
   del = require('del');
 
 var root = 'static/';
-var goal = '../m.ppdaicdn.com/msite';
+var goal = 'dist';
 var jsPath = root + 'js/*.js';
 var cssPath = root + 'css/**/*.scss';
 var imgPath = root + 'img/work/*';
@@ -46,7 +46,7 @@ gulp.task('css', function() {
 // js
 gulp.task('js', function() {
   return gulp.src(jsPath)
-    //.pipe(concat('main.js'))  //jsPath下所有js文件合并到main.js
+    .pipe(concat('main.js')) //jsPath下所有js文件合并到main.js
     .pipe(gulp.dest('dist/js')) //合并后放入目标文件夹
     .pipe(rename({ suffix: '.min' })) //重命名
     .pipe(uglify()) //混淆文件
@@ -85,13 +85,13 @@ gulp.task('watch', function() {
   gulp.watch(htmlPath, ['html']);
 
   // Watch .scss files
-  //   gulp.watch(cssPath, ['css']);
+  gulp.watch(cssPath, ['css']);
 
   // Watch .js files
   gulp.watch(jsPath, ['js']);
 
   // Watch image files
-  //   gulp.watch(imgPath, ['images']);
+  gulp.watch(imgPath, ['images']);
 
 
 });
@@ -102,8 +102,8 @@ var config = {
   watchFiles: ['**/*.*'] //监听项目文件下所有文件
 }
 
-// gulp.task('server', ['html','images','js', 'css'], function() {
-gulp.task('server', ['html', 'js'], function() {
+gulp.task('server', ['html', 'images', 'js', 'css'], function() {
+  // gulp.task('server', ['html', 'js'], function() {
   // browserSync初始化配置
   browserSync.init({
     files: config.watchFiles,
@@ -112,10 +112,11 @@ gulp.task('server', ['html', 'js'], function() {
     },
   });
   gulp.watch(jsPath, ['js']);
-  //   gulp.watch(cssPath, ['css']);
+  gulp.watch(cssPath, ['css']);
   gulp.watch(htmlPath).on('change', browserSync.reload);
   gulp.start('watch');
 });
 
 // Default task
 gulp.task('default', ['server']);
+
