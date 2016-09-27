@@ -8,7 +8,6 @@ var MongoClient = require('mongodb').MongoClient;
 //自定义变量
 var user = [];
 var Local_Mongo_Url = 'mongodb://localhost:27017/eve';
-var signup_Path = __dirname + '\\view\\signup.htm';
 
 //设置静态资源的相对路径
 app.use('/static', express.static(__dirname + '\\view\\static'));
