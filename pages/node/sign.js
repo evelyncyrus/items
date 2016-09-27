@@ -50,18 +50,18 @@ var compareData = function(db, data, callback) {
 //compareUser方法
 app.get('/compareUser', function(req, res) {
   user.name = req.query.name,
-  user.password = req.query.password,
-  MongoClient.connect(Local_Mongo_Url, function(err, db) {
-    compareData(db, user, function(result) {
-      if(result[0].password === user.password) {
-        // console.log('密码正确');
-        res.send({'code':1});
-      } else {
-        res.send({'code':2});
-      }
-      db.close();
-    })
-  });
+    user.password = req.query.password,
+    MongoClient.connect(Local_Mongo_Url, function(err, db) {
+      compareData(db, user, function(result) {
+        if(result[0].password === user.password) {
+          // console.log('密码正确');
+          res.send({ 'code': 1 });
+        } else {
+          res.send({ 'code': 2 });
+        }
+        db.close();
+      })
+    });
 });
 
 //setUser方法
@@ -73,25 +73,11 @@ app.get('/setUser', function(req, res) {
     'id': req.query.id
   },
   MongoClient.connect(Local_Mongo_Url, function(err, db) {
-    user = JSON.parse(user),
-      insertData(db, user, function(result) {
-        db.close();
-      });
-  });
-  user = JSON.stringify(user),
-  fs.writeFile(file, user, function(err) {
-    if(err) {
-      console.log('错误');
-    } else {
-      console.log('写入数据为' + user);
-    }
-  });
-  fs.readFile(file, 'utf-8', function(err, data) {
-    if(err) {
-      console.log('读取文件失败');
-    } else {
-      res.end(data);
-    }
+    console.log(typeof user);
+    // user = JSON.parse(user),
+    insertData(db, user, function(result) {
+      db.close();
+    });
   });
 });
 
