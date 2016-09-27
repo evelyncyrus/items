@@ -1,4 +1,6 @@
-input {
+input,
+button {
+  display: inline-block;
   margin: 10px 0;
   line-height: 30px;
   padding: 0 10px;
@@ -11,12 +13,28 @@ input {
   color: #fff;
 }
 
+[class^="info-"],
+[class*="info-"] {
+  font-size: 12px;
+}
+
+
+/*warm modle*/
+
 .btn-warm {
   background-color: rgba(210, 110, 10, .8);
 }
 
 .btn-warm:active {
   background-color: rgba(210, 150, 10, .8);
+}
+
+.info-warm {
+  padding-left: 20px;
+  background: url(../img/warm.png) no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  color: rgba(210, 100, 0, .8);
 }
 
 body {
@@ -34,4 +52,19 @@ body {
 .inner label {
   display: inline-block;
   width: 80px;
+}
+
+.inner input {
+  width: 70%;
+}
+
+.sub,
+.sub .btn-warm {
+  text-align: center;
+}
+
+.sub .btn-warm {
+  width: 100%;
+  line-height: 40px;
+  margin-top: 50px;
 }
