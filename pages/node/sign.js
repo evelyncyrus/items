@@ -29,7 +29,7 @@ var insertData = function(db, data, callback) {
       console.log('Error:' + err);
       return;
     }
-    callback();
+    callback(result);
   });
 }
 
@@ -66,18 +66,22 @@ app.get('/compareUser', function(req, res) {
 //setUser方法
 app.get('/setUser', function(req, res) {
   user = {
-    'name': req.query.name,
-    'password': req.query.password,
-    'profession': req.query.profession,
-    'id': req.query.id
-  },
-  MongoClient.connect(Local_Mongo_Url, function(err, db) {
-    console.log(typeof user);
-    // user = JSON.parse(user),
-    insertData(db, user, function(result) {
-      db.close();
+      'name': req.query.name,
+      'password': req.query.password,
+      'profession': req.query.profession,
+      'id': req.query.id
+    },
+    MongoClient.connect(Local_Mongo_Url, function(err, db) {
+      insertData(db, user, function(result) {
+        var flag = result.result.ok;
+        if(flag === 1) {
+          res.send({ 'code': 1, 'msg': '用户信息写入成功' });
+        } else {
+          res.send({ 'code': 2, 'msg': '用户信息写入失败' });
+        }
+        db.close();
+      });
     });
-  });
 });
 
 var server = app.listen(8081, function() {
