@@ -23,7 +23,7 @@ app.get('/signup', function(req, res) {
 //用户信息插入mongo方法
 var insertData = function(db, data, callback) {
   var collection = db.collection('userInfo');
-
+  collection.createIndex({ "name": 1 }, { unique: true });
   collection.insert(data, function(err, result) {
     if(err) {
       console.log('Error:' + err);
@@ -37,6 +37,7 @@ var insertData = function(db, data, callback) {
 var compareData = function(db, data, callback) {
   var collection = db.collection('userInfo');
   var goalStr = { "name": data.name };
+  collection.createIndex({ "name": 1 }, { unique: true });
   collection.find(goalStr).toArray(function(err, result) {
     if(err) {
       console.log('failed');
@@ -53,7 +54,6 @@ app.get('/compareUser', function(req, res) {
     MongoClient.connect(Local_Mongo_Url, function(err, db) {
       compareData(db, user, function(result) {
         if(result[0].password === user.password) {
-          // console.log('密码正确');
           res.send({ 'code': 1 });
         } else {
           res.send({ 'code': 2 });
