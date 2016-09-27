@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <!--uc和qq强制竖屏-->
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <!--uc和qq强制全屏-->
+  <meta name="full-screen" content="yes">
+  <meta name="x5-fullscreen" content="true">
+  <title>SignUp</title>
+  <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="static/css/sign.css">
+</head>
+
+<body>
+  <h3>登录</h3>
+  <form action="http://localhost:8081/CompareUser" method="GET">
+    <section class="inner">
+      <label for="name">Name:</label><input id="name" type="text" name="name">
+      <br><label for="password">Password:</label><input id="password" type="password" name="password">
+      <input class="btn-warm" type="submit" value="Submit">
+    </section>
+  </form>
+</body>
+
+</html>

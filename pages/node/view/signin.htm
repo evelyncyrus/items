@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <!--uc和qq强制竖屏-->
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <!--uc和qq强制全屏-->
+  <meta name="full-screen" content="yes">
+  <meta name="x5-fullscreen" content="true">
+  <title>SignIn</title>
+  <link rel="stylesheet" href="static/css/reset.css">
+  <link rel="stylesheet" href="static/css/sign.css">
+</head>
+
+<body>
+  <section>
+    <h3>注册</h3>
+  </section>
+  <form action="http://localhost:8081/setUser" method="GET">
+    <section class="inner">
+      <label for="">Name:</label><input type="text" name="name">
+      <br><label for="">Password:</label> <input type="password" name="password">
+      <br><label for="">Profession:</label> <input type="text" name="profession">
+      <br><label for="">Id:</label> <input type="text" name="id">
+      <input class="btn-warm" type="submit" value="Submit">
+    </section>
+  </form>
+</body>
+
+</html>
