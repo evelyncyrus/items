@@ -23,6 +23,7 @@ app.get('/signup', function(req, res) {
 //用户信息插入mongo方法
 var insertData = function(db, data, res, callback) {
   var collection = db.collection('userInfo');
+  collection.createIndex({ 'name': 1 }, { unique: true });
   collection.insert(data, function(err, result) {
     if(err) {
       res.send({ 'code': 3, 'msg': err });
