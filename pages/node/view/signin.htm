@@ -48,7 +48,7 @@
     $('#btnSubmit').on('click', function() {
       var url = 'http://localhost:8081/setUser';
       var data = $('#userForm').serializeArray();
-      $.get(url, data, function(res) {
+      $.post(url, data, function(res) {
         var obj = [];
         obj.url = 'static/img/warm.svg';
         obj.txt = res.msg;
