@@ -21,12 +21,11 @@ app.get('/signup', function(req, res) {
 });
 
 //用户信息插入mongo方法
-var insertData = function(db, data, callback) {
+var insertData = function(db, data, res, callback) {
   var collection = db.collection('userInfo');
-  collection.createIndex({ "name": 1 }, { unique: true });
   collection.insert(data, function(err, result) {
     if(err) {
-      console.log('Error:' + err);
+      res.send({ 'code': 3, 'msg': err });
       return;
     }
     callback(result);
@@ -37,7 +36,6 @@ var insertData = function(db, data, callback) {
 var compareData = function(db, data, callback) {
   var collection = db.collection('userInfo');
   var goalStr = { "name": data.name };
-  collection.createIndex({ "name": 1 }, { unique: true });
   collection.find(goalStr).toArray(function(err, result) {
     if(err) {
       console.log('failed');
@@ -65,6 +63,7 @@ app.get('/compareUser', function(req, res) {
 
 //setUser方法
 app.get('/setUser', function(req, res) {
+  var res = res;
   user = {
       'name': req.query.name,
       'password': req.query.password,
@@ -72,7 +71,7 @@ app.get('/setUser', function(req, res) {
       'id': req.query.id
     },
     MongoClient.connect(Local_Mongo_Url, function(err, db) {
-      insertData(db, user, function(result) {
+      insertData(db, user, res, function(result) {
         var flag = result.result.ok;
         if(flag === 1) {
           res.send({ 'code': 1, 'msg': '用户信息写入成功' });
@@ -85,7 +84,7 @@ app.get('/setUser', function(req, res) {
 });
 
 var server = app.listen(8081, function() {
-  var host = server.address().address
-  var port = server.address().port
+  var host = server.address().address;
+  var port = server.address().port;
   console.log('访问地址http://', host, port);
 });

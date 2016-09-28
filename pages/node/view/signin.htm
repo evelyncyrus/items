@@ -16,31 +16,62 @@
   <title>SignIn</title>
   <link rel="stylesheet" href="static/css/reset.css">
   <link rel="stylesheet" href="static/css/sign.css">
+  <link rel="stylesheet" href="static/css/dialog.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="static/js/dialog.js"></script>
 </head>
 
 <body>
   <section>
     <h3>注册</h3>
   </section>
-  <form action="http://localhost:8081/setUser" method="GET">
+  <form id="userForm">
     <section class="inner">
       <div class="item">
-        <label for="">Name:</label><input type="text" name="name">
+        <label for="">Name:</label><input type="text" name="name" placeholder="请输入帐户名">
       </div>
       <div class="item">
-        <label for="">Password:</label><input type="password" name="password">
+        <label for="">Password:</label><input type="password" name="password" placeholder="请输入密码">
       </div>
       <div class="item">
-        <label for="">Profession:</label><input type="text" name="profession">
+        <label for="">Profession:</label><input type="text" name="profession" placeholder="请输入职业">
       </div>
-      <div class="item">
-        <label for="">Id:</label><input type="text" name="id">
-      </div>
+      <!--<div class="item">
+        <label for="">Id:</label><input type="text" name="id" value="请输入id">
+      </div>-->
       <div class="sub">
-        <input class="btn-warm" type="submit" value="Submit">
+        <button class="btn-warm" type="button" id="btnSubmit">Submit</button>
       </div>
     </section>
   </form>
+  <script>
+    $('#btnSubmit').on('click', function() {
+      var url = 'http://localhost:8081/setUser';
+      var data = $('#userForm').serializeArray();
+      $.get(url, data, function(res) {
+        var obj = [];
+        obj.url = 'static/img/warm.svg';
+        obj.txt = res.msg;
+        obj.goal = document;
+        obj.interval = 3500;
+        if (res.code === 1) {
+          window.location.href = 'http://www.bing.com'
+        } else if (res.code === 2) {
+          var aPopup = new createPopup(obj);
+          aPopup.alert();
+          return false;
+        } else if (res.code === 3) {
+          obj.txt = '用户名重复，请重新填写';
+          obj.fun = function() {
+            $('.item input').val('');
+          }
+          var bPopup = new createPopup(obj);
+          bPopup.alert();
+          return false;
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
