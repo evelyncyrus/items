@@ -4,7 +4,7 @@
  */
 function createPopup(obj) {
   this.time = obj.interval || 3000,
-  this.root = obj.goal || '',
+  this.root = obj.goal || document,
   this.url = obj.url || '../../static/img/demo/warn.svg',
   this.txt = obj.txt || '',
   this.body = this.root.body || '',

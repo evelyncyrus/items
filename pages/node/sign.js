@@ -26,7 +26,7 @@ var insertData = function(db, data, res, callback) {
   collection.createIndex({ 'name': 1 }, { unique: true });
   collection.insert(data, function(err, result) {
     if(err) {
-      res.send({ 'code': 3, 'msg': err });
+      res.send({ 'code': 3, 'msg': '用户名重复，请重新填写!' });
       return;
     }
     callback(result);
@@ -54,12 +54,13 @@ app.post('/signup', function(req, res) {
   user.name = req.body.name,
     user.password = req.body.password,
     MongoClient.connect(Local_Mongo_Url, function(err, db) {
-      console.log(err);
       compareData(db, user, function(result) {
-        if(result[0].password === user.password) {
+        if(result.length === 0) {
+          res.send({ 'code': 3, 'msg': '用户名不存在!' });
+        } else if(result[0].password === user.password) {
           res.send({ 'code': 1 });
         } else {
-          res.send({ 'code': 2 });
+          res.send({ 'code': 2, 'msg': '密码错误！' });
         }
         db.close();
       })
@@ -68,7 +69,6 @@ app.post('/signup', function(req, res) {
 
 //signin方法
 app.post('/signin', function(req, res) {
-  console.log(req.body)
   user = {
       'name': req.body.name,
       'password': req.body.password,
@@ -78,7 +78,9 @@ app.post('/signin', function(req, res) {
     MongoClient.connect(Local_Mongo_Url, function(err, db) {
       insertData(db, user, res, function(result) {
         var flag = result.result.ok;
-        if(flag === 1) {
+        if(err) {
+          console.log(err);
+        } else if(flag === 1) {
           res.send({ 'code': 1, 'msg': '用户信息写入成功' });
         } else {
           res.send({ 'code': 2, 'msg': '用户信息写入失败' });

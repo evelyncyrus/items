@@ -16,7 +16,9 @@
   <title>SignUp</title>
   <link rel="stylesheet" href="static/css/reset.css">
   <link rel="stylesheet" href="static/css/sign.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="static/css/dialog.css">
+  <script src="static/js/jquery-3.1.0.min.js"></script>
+  <script src="static/js/main.js"></script>
 </head>
 
 <body>
@@ -36,20 +38,14 @@
   </form>
   <script>
     $('#btnSubmit').on('click', function() {
-      var url = 'http://localhost:8081/signup';
-      var data = $('#userForm').serializeArray();
-      $.post(url, data, function(res) {
-        console.log(res)
-        if (res.code === 1) {
-          window.location.href = 'http://www.bing.com';
-        } else if (!$('.info-warm').length) {
-          var dom = '<span class="info-warm">密码错误<span>';
-          $('.item').eq(1).append(dom),
-            setTimeout(function() {
-              $('.info-warm').remove();
-            }, 5000);
-        }
-      });
+      var inn = [];
+      inn.data = $('#userForm').serializeArray();
+      inn.url = 'http://localhost:8081/signup';
+      inn.role = 'signup';
+      inn.fun = function() {
+        $('.item input').val('');
+      }
+      var signup = new signPost(inn);
     });
   </script>
 </body>

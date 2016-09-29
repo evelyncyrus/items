@@ -17,8 +17,8 @@
   <link rel="stylesheet" href="static/css/reset.css">
   <link rel="stylesheet" href="static/css/sign.css">
   <link rel="stylesheet" href="static/css/dialog.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script src="static/js/dialog.js"></script>
+  <script src="static/js/jquery-3.1.0.min.js"></script>
+  <script src="static/js/main.js"></script>
 </head>
 
 <body>
@@ -36,9 +36,6 @@
       <div class="item">
         <label for="">Profession:</label><input type="text" name="profession" placeholder="请输入职业">
       </div>
-      <!--<div class="item">
-        <label for="">Id:</label><input type="text" name="id" value="请输入id">
-      </div>-->
       <div class="sub">
         <button class="btn-warm" type="button" id="btnSubmit">Submit</button>
       </div>
@@ -46,30 +43,14 @@
   </form>
   <script>
     $('#btnSubmit').on('click', function() {
-      var url = 'http://localhost:8081/signinzz n                                                                                                                                                               .,;p   ';
-      var data = $('#userForm').serializeArray();
-      $.post(url, data, function(res) {
-        var obj = [];
-        obj.url = 'static/img/warm.svg';
-        obj.txt = res.msg;
-        obj.goal = document;
-        obj.interval = 3500;
-        if (res.code === 1) {
-          window.location.href = 'http://www.bing.com'
-        } else if (res.code === 2) {
-          var aPopup = new createPopup(obj);
-          aPopup.alert();
-          return false;
-        } else if (res.code === 3) {
-          obj.txt = '用户名重复，请重新填写';
-          obj.fun = function() {
-            $('.item input').val('');
-          }
-          var bPopup = new createPopup(obj);
-          bPopup.alert();
-          return false;
-        }
-      });
+      var inn = [];
+      inn.data = $('#userForm').serializeArray();
+      inn.url = 'http://localhost:8081/signin';
+      inn.role = 'signin';
+      inn.fun = function() {
+        $('.item input').val('');
+      }
+      var signin = new signPost(inn);
     });
   </script>
 </body>
