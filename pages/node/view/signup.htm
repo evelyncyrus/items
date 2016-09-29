@@ -36,17 +36,18 @@
   </form>
   <script>
     $('#btnSubmit').on('click', function() {
-      var url = 'http://localhost:8081/CompareUser';
+      var url = 'http://localhost:8081/signup';
       var data = $('#userForm').serializeArray();
-      $.get(url, data, function(res) {
+      $.post(url, data, function(res) {
+        console.log(res)
         if (res.code === 1) {
           window.location.href = 'http://www.bing.com';
         } else if (!$('.info-warm').length) {
           var dom = '<span class="info-warm">密码错误<span>';
           $('.item').eq(1).append(dom),
-          setTimeout(function() {
-            $('.info-warm').remove();
-          }, 5000);
+            setTimeout(function() {
+              $('.info-warm').remove();
+            }, 5000);
         }
       });
     });

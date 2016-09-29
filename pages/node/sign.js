@@ -46,12 +46,15 @@ var compareData = function(db, data, callback) {
   });
 }
 
-//compareUser方法
-app.post('/compareUser', function(req, res) {
-  console.log(req.body);
+//解析
+app.use(bodyParser.urlencoded());
+
+//signup方法
+app.post('/signup', function(req, res) {
   user.name = req.body.name,
     user.password = req.body.password,
     MongoClient.connect(Local_Mongo_Url, function(err, db) {
+      console.log(err);
       compareData(db, user, function(result) {
         if(result[0].password === user.password) {
           res.send({ 'code': 1 });
@@ -63,27 +66,26 @@ app.post('/compareUser', function(req, res) {
     });
 });
 
-//setUser方法
-// app.use(express.bodyParser());
-app.post('/setUser', function(req, res) {
+//signin方法
+app.post('/signin', function(req, res) {
   console.log(req.body)
   user = {
-    'name': req.body.name,
-    'password': req.body.password,
-    'profession': req.body.profession,
-    'id': req.body.id
-  },
-  MongoClient.connect(Local_Mongo_Url, function(err, db) {
-    insertData(db, user, res, function(result) {
-      var flag = result.result.ok;
-      if(flag === 1) {
-        res.send({ 'code': 1, 'msg': '用户信息写入成功' });
-      } else {
-        res.send({ 'code': 2, 'msg': '用户信息写入失败' });
-      }
-      db.close();
+      'name': req.body.name,
+      'password': req.body.password,
+      'profession': req.body.profession,
+      'id': req.body.id
+    },
+    MongoClient.connect(Local_Mongo_Url, function(err, db) {
+      insertData(db, user, res, function(result) {
+        var flag = result.result.ok;
+        if(flag === 1) {
+          res.send({ 'code': 1, 'msg': '用户信息写入成功' });
+        } else {
+          res.send({ 'code': 2, 'msg': '用户信息写入失败' });
+        }
+        db.close();
+      });
     });
-  });
 });
 
 var server = app.listen(8081, function() {
