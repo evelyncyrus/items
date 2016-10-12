@@ -1,0 +1,120 @@
+@import '../base/reset';
+$btnBase: #4fabeb;
+html,
+body {
+  background-color: #F0F0F0;
+}
+
+.main-banner {
+  padding: 80/$bfSize * 1rem;
+  height: 364/$bfSize * 1rem;
+  box-sizing: border-box;
+  img {
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    outline: none;
+    background: #fff;
+    border: 1px solid $borderColor;
+    width: 190/$bfSize *1rem;
+    height: 190/$bfSize *1rem;
+  }
+}
+
+.main-content {
+  padding: 0 30/$bfSize * 1rem;
+  input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 30/$bfSize * 1rem;
+    &[type="button"] {
+      cursor: pointer;
+    }
+    &[type="text"],
+    &[type="tel"] {
+      padding-left: 100/$bfSize * 1rem;
+    }
+  }
+}
+
+.eve-flex-child input[type="text"] {
+  width: 450/$bfSize * 1rem;
+}
+
+.picharge {
+  text-align: right;
+  img {
+    width: 219/$bfSize * 1rem;
+    height: 97/$bfSize *1rem;
+  }
+}
+
+.vcode {
+  text-align: right;
+  input[type="button"] {
+    height: 100/$bfSize *1rem;
+    width: 219/$bfSize * 1rem;
+    @include btnCss($bgColor: #fff, $color2: $btnBase, $color1: $btnBase)
+  }
+}
+
+.form-ul {
+  li {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 30/$bfSize * 1rem;
+      left: 42/$bfSize * 1rem;
+      height: 40/$bfSize * 1rem;
+      width: 38/$bfSize * 1rem;
+      background: url(../img/sprite.png) no-repeat 0 0;
+      background-size: 50/$bfSize *1rem 200/$bfSize * 1rem;
+    }
+    &.second:before {
+      background-position: 0 -80/$bfSize*1rem;
+    }
+    &.third {
+      &:before {
+        background-position: 0 -156/$bfSize*1rem;
+      }
+      input {
+        margin-bottom: 22/$bfSize *1rem;
+      }
+    }
+  }
+}
+
+.warn-info {
+  height: 1rem;
+  color: #e70a24;
+  font-size: 26/$bfSize * 1rem;
+}
+
+.list-btn {
+  margin-bottom: 180/$bfSize * 1rem;
+  padding-top: 38/$bfSize * 1rem;
+  input[type="button"] {
+    @include btnCss($line: 90/$bfSize * 1rem, $bgColor: $btnBase);
+    @include fullBtn;
+    margin-bottom: 0;
+    border-radius: 5px;
+  }
+}
+
+.main-ft {
+  padding-bottom: 50/$bfSize * 1rem;
+  text-align: center;
+  p {
+    color: #999;
+    line-height: 38/$bfSize *1rem;
+    font-size: 24/$bfSize * 1rem;
+  }
+  &.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

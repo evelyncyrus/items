@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    #Video1
+    {
+     position:absolute;
+     top: 50px;
+     left:0px;
+     width:1000px;
+     border:2px solid blue;
+     display:block;
+     z-index:99;
+     }
+
+   #Video2
+    {
+     position:absolute;
+     top:80px;
+     left:60px;
+     width:300px;
+     border:2px solid red;
+     z-index:100;
+    }
+
+    </style>
+</head>
+<body>
+    <video id="Video1" controls loop autoplay >
+        <source src="http://ie.microsoft.com/testdrive/ieblog/2011/nov/pp4_blog_demo.mp4" type="video/mp4" />
+    </video>
+
+    <video id="Video2" muted autoplay controls >
+        <source src="http://ie.microsoft.com/testdrive/Videos/BehindIE9AllAroundFast/video.mp4" type="video/mp4" />
+        HTML5 Video not supported
+    </video>
+
+
+</body>
+</html>

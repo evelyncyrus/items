@@ -5,14 +5,19 @@
   <meta charset="UTF-8">
   <title>Input attr</title>
   <style>
-    html,body{
+    html,
+    body {
       font-size: 20px;
-      font-family: 'Arial, Helvetica, sans-serif','Microsoft Yahei';
+      font-family: 'Arial, Helvetica, sans-serif', 'Microsoft Yahei';
     }
-    html,body,ul{
+
+    html,
+    body,
+    ul {
       margin: 0;
       padding: 0;
     }
+
     input[type="text"] {
       color: brown;
       padding: 3px 5px;
@@ -20,11 +25,13 @@
       -webkit-appearance: initial;
       border: 1px solid currentColor;
     }
+
     input[type="text"]::-webkit-input-placeholder {
       opacity: .6;
       color: brown;
     }
-    ul{
+
+    ul {
       list-style: none;
       display: -webkit-flex;
       display: -moz-flex;
@@ -33,21 +40,29 @@
       display: flex;
       padding: 2rem 0;
     }
-    li{
+
+    li {
       -webkit-flex: 1px;
       -moz-flex: 1px;
       -ms-flex: 1px;
       -o-flex: 1px;
       flex: 1px;
-
     }
+
+    li:first-letter {
+      color: red;
+    }
+
     a {
       text-decoration: none;
     }
-    section,footer{
+
+    section,
+    footer {
       padding: 1rem;
     }
-    .ft{
+
+    .ft {
       margin-top: 30px;
     }
   </style>
@@ -70,30 +85,31 @@
   </footer>
 
   <script>
-
     //split fn
     var sentence = 'the quick brown fox jumped over the lazy dog';
-	  var words = sentence.split(" ");
-    for(var i = 0 ; i<words.length; i++){
-      console.log('word'+i+':'+words[i]);
+    var words = sentence.split(" ");
+    for (var i = 0; i < words.length; i++) {
+      console.log('word' + i + ':' + words[i]);
     }
 
     //成绩
-    function termGreat(){
+    function termGreat() {
       this.num = [];
       this.add = add;
       this.average = average;
     }
-    function add(great){
+
+    function add(great) {
       this.num.push(great);
-    }  
-    function average(){
+    }
+
+    function average() {
       var len = this.num.length;
       var tot = 0;
-      for(var i=0;i<len;i++){
+      for (var i = 0; i < len; i++) {
         tot = tot + this.num[i];
       }
-      return tot/len;
+      return tot / len;
     }
 
     var thisTerm = new termGreat();
@@ -108,9 +124,7 @@
     thisTerm.add(95);
     console.log(thisTerm.average())
 
-    console.log(this)
-
-    function fn(element){
+    function fn(element) {
       this.ele = element;
     }
 
@@ -123,17 +137,15 @@
     var name = 'dd';
     var person = {
       name: 'cc',
-      hello: function(sth){
+      hello: function(sth) {
         // var that = this;
-        var sayhello = function(sth){
+        var sayhello = function(sth) {
           console.log(this.name + ' says ' + sth);
         };
         sayhello(sth);
       }
     }
     person.hello('hello world');
-
-    
   </script>
 
 </body>
