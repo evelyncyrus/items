@@ -1,0 +1,104 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+}
+
+.popup p {
+  font-size: 14px;
+}
+
+.popup p:after {
+  content: '';
+  height: 100%;
+}
+
+.popup p:after,
+.popup em {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.mask {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .4);
+}
+
+.popup em {
+  width: 28px;
+  margin: 0 10px
+}
+
+.popup p strong {
+  display: inline
+}
+
+.popup.popup-confirm {
+  width: 220px;
+  height: 140px;
+  text-align: center;
+  background-color: hsla(0, 0%, 100%, .9);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-left: -110px;
+  margin-top: -70px;
+}
+
+.popup.popup-confirm a {
+  display: inline-block;
+  width: 50%;
+  height: 36px;
+  line-height: 36px;
+  color: #ff2741;
+  border-top: 1px solid #d2d2d2;
+}
+
+.popup.popup-confirm p {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 104px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  color: #595959;
+  text-align: center;
+}
+
+.popup p strong {
+  display: inline-block;
+  max-width: 150px;
+  text-align: justify;
+  vertical-align: middle;
+}
+
+.popup.popup-alert {
+  width: 180px;
+  padding: 20px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, .8);
+  margin-left: -90px;
+  margin-top: -25px
+}
+
+.popup.popup-alert p {
+  color: #fff;
+  margin: 0;
+  overflow: hidden;
+}
+
+.popup.popup-alert p strong {
+  width: 110px;
+  line-height: 16px;
+}
+
+.popup.popup-confirm a.popup-confirm-cancel {
+  border-right: 1px solid #d2d2d2;
+}

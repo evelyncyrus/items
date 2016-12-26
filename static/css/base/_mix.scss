@@ -1,48 +1,48 @@
 @import 'config';
 @mixin maxWidth($width:$maxScreen) {
-  max-width: $width;
+    max-width: $width;
 }
 
 //*full img*
 @mixin fullImg($px: 0, $height:100%) {
-  width: 100%;
-  margin-bottom: $px - 3px;
-  img {
     width: 100%;
-    height: $height;
-  }
+    margin-bottom: $px - 10px;
+    img {
+        width: 100%;
+        height: $height;
+    }
 }
 
 //*flex col*
 @mixin flexPar() {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
 }
 
 @mixin flexChild($rate: 1, $textAlign: center) {
-  -webkit-box-flex: $rate;
-  -ms-flex: $rate;
-  flex: $rate;
-  text-align: $textAlign;
+    -webkit-box-flex: $rate;
+    -ms-flex: $rate;
+    flex: $rate;
+    text-align: $textAlign;
 }
 
 //*btn css*
 @mixin btnCss($showWay: inline-block, $color1: $white, $color2: transparent, $bgColor: $lightColor, $line: 2.5rem, $radius: .3rem) {
-  display: $showWay;
-  font-size: 1rem;
-  color: $color1;
-  border: 1px solid $color2;
-  background-color: $bgColor;
-  line-height: $line;
-  border-radius: $radius;
+    display: $showWay;
+    font-size: 1rem;
+    color: $color1;
+    border: 1px solid $color2;
+    background-color: $bgColor;
+    line-height: $line;
+    border-radius: $radius;
 }
 
 @mixin fullBtn {
-  width: 100%;
+    width: 100%;
 }
 
 //*text align*
 @mixin textAlign($defualt:center) {
-  text-align: $defualt;
+    text-align: $defualt;
 }

@@ -65,12 +65,25 @@
     .ft {
       margin-top: 30px;
     }
+
+    .upper .up {
+      position: relative;
+      font-size: 1ch;
+      bottom: 1ex;
+    }
   </style>
 </head>
 
 <body>
 
   <section id="page">
+    1.a链接的试验：<br>
+    类型1：<a href="javascript:void(0)" target="_blank">123</a><br>
+    类型2：<a href="javascript:void(0)">456</a><br>
+    类型3：<a href="javascript:void(0)" id="aLink" traget="_blank">789</a>
+
+
+
     <img src="" alt="">
     <ul id="navigation">
       <li><a href="javascript:void(0)">item1</a></li>
@@ -82,6 +95,9 @@
     <input type="checkbox" id="red">
     <label for="red">hhh</label>
     <input type="text" class="val" data-val="hhhh" placeholder="hhhhh">
+    <section class="upper">
+      房屋占地面积： 1200m<span class="up">2</span>
+    </section>
   </footer>
 
   <script>
@@ -146,6 +162,12 @@
       }
     }
     person.hello('hello world');
+
+    var aLink = document.getElementById('aLink');
+    aLink.onclick = function() {
+      alert('111');
+      return false;
+    }
   </script>
 
 </body>

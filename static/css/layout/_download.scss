@@ -1,38 +1,60 @@
 @import '../base/config';
+$bgColor:#F7F7F7;
+$themeColor: #FF5A00;
+$fontColor: #333333;
+body {
+    background-color: $ftColor;
+}
 
-.app-contain {
-  padding: 2.5rem 0;
-  text-align: center;
-
-  .hd-area {margin-bottom: .8rem;}
-
-
-  h3 {
-    margin: 0;
-    padding: 0;
-    color: $lightColor;
-    line-height: 1.5;
-    font-weight: 500;
-    font-size: 1.05rem;
-
-    .num {
-      font-weight: bold;
+.hd-area {
+    padding: 0 28/$bfSize *1rem;
+    font-size: 32/$bfSize * 1rem;
+    line-height: 84/$bfSize *1rem;
+    background-color: $white;
+    .hd-arrow {
+        max-width: 32/$bfSize *1rem;
+        img {
+            vertical-align: -2px;
+        }
     }
-  }
+    .hd-title {
+        padding-right: 32/$bfSize *1rem;
+    }
+}
 
-  .bd-area, .ft-area {
-    padding: 0 1.5rem;
-  }
+.bd-area,
+.ft-area {
+    text-align: center;
+    padding: 0 28/$bfSize *1rem;
+}
 
-  .bd-area {
-    height: 13rem;
-    background: url(http://m.ppdaicdn.com/msite/img/landing/red-bag.png) no-repeat center center;
+.bd-area {
+    padding-top: 65/$bfSize *1rem;
     background-size: contain;
-  }
+    margin-bottom: 146/$bfSize *1rem;
+    .bd-img img {
+        height: 320/$bfSize *1rem;
+        margin-bottom: 20/$bfSize *1rem;
+    }
+    .bd-info {
+        // margin: 1.5rem 0 .7rem;
+        color: $infoColor;
+        font-size: .9rem;
+        h5 {
+            color: $themeColor;
+            font-size: 32/$bfSize * 1rem;
+            line-height: 65/$bfSize *1rem;
+        }
+        p {
+            color: $fontColor;
+            font-size: 22/$bfSize * 1rem;
+            line-height: 36/$bfSize *1rem;
+        }
+    }
+}
 
-  .info {
-    margin: 1.5rem 0 .7rem;
-    color: $infoColor ;
-    font-size: .9rem;
-  }
+.ft-area {
+    .ft-btn {
+        margin-bottom: 50/$bfSize * 1rem
+    }
 }

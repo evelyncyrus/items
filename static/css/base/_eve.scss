@@ -1,7 +1,6 @@
 @import 'mix';
-
 //*eve btn*
-a.eve-btn-link{
+a.eve-btn-link {
   @include btnCss();
   width: 100%;
   max-width: 18rem;
@@ -9,6 +8,32 @@ a.eve-btn-link{
 }
 
 //*eve flex*
-.eve-flex-child{@include flexChild();}
-.eve-flex-par{@include flexPar();}
-.eve-full-img{@include fullImg();}
+.eve-flex-child {
+  @include flexChild();
+}
+
+.eve-flex-par {
+  @include flexPar();
+}
+
+.eve-full-img {
+  @include fullImg();
+}
+
+//btn
+.btn {
+  display: inline-block;
+  line-height: 80/$bfSize * 1rem;
+  width: 100%;
+  border-radius: 80/$bfSize * 1rem;
+}
+
+.btn-blue {
+  color: $white;
+  background-color: $btnBlue;
+}
+
+.btn-blue-outline {
+  color: $btnBlue;
+  border: 1px solid $btnBlue;
+}

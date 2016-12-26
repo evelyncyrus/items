@@ -1,0 +1,11 @@
+{
+  "name": "sign",
+  "version": "0.0.0",
+  "description": "signin and signup application",
+  "main": "sign.js",
+  "author": "evelyn",
+  "dependencies": {
+    "express": "^4.14.0",
+    "body-parser": "^1.4.3"
+  }
+}
