@@ -77,10 +77,10 @@
 <body>
 
   <section id="page">
-    1.a链接的试验：<br>
-    类型1：<a href="javascript:void(0)" target="_blank">123</a><br>
-    类型2：<a href="javascript:void(0)">456</a><br>
-    类型3：<a href="javascript:void(0)" id="aLink" traget="_blank">789</a>
+    1.a链接的试验：<br> 类型1：
+    <a href="javascript:void(0)" target="_blank">123</a><br> 类型2：
+    <a href="javascript:void(0)">456</a><br> 类型3：
+    <a href="javascript:void(0)" id="aLink" traget="_blank">789</a>
 
 
 
@@ -153,9 +153,9 @@
     var name = 'dd';
     var person = {
       name: 'cc',
-      hello: function(sth) {
+      hello: function (sth) {
         // var that = this;
-        var sayhello = function(sth) {
+        var sayhello = function (sth) {
           console.log(this.name + ' says ' + sth);
         };
         sayhello(sth);
@@ -164,10 +164,15 @@
     person.hello('hello world');
 
     var aLink = document.getElementById('aLink');
-    aLink.onclick = function() {
+    aLink.onclick = function () {
       alert('111');
       return false;
     }
+
+    //console栏输出带样式文字
+    var txt = ["\n %c %c %c EvelynCyrus  - ✰ ✰  %c  %c  http://github.com/evelyncyrus %c %c ♥%c♥%c♥ \n\n", "background: #ff66a5; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff66a5; background: #030307; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "background: #ffc3dc; padding:5px 0;", "background: #ff66a5; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;", "color: #ff2424; background: #fff; padding:5px 0;"];
+    console.log.apply(console, txt)
+
   </script>
 
 </body>
